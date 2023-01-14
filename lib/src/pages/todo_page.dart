@@ -25,7 +25,7 @@ class _TodoPageState extends State<TodoPage> {
         backgroundColor: const Color(0xFF001f3f),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.5),
@@ -34,6 +34,7 @@ class _TodoPageState extends State<TodoPage> {
             itemCount: _todoItems.length,
             itemBuilder: (context, index) {
               return  CheckboxListTile(
+                side:BorderSide(color: const Color(0xFF0da574)) ,
                 value: _todoItems[index].completed,
                 onChanged: (newValue) =>{
                   setState(() {
@@ -42,7 +43,8 @@ class _TodoPageState extends State<TodoPage> {
                   })
                 } ,
                   tileColor: const Color(0xFF083358),
-                  title: Text(_todoItems[index].title, style: const TextStyle(color: Colors.white)),
+                  title: Text(_todoItems[index].title,
+                   style: const TextStyle(color: Colors.white)),
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.5))
                     ) ,
@@ -52,6 +54,7 @@ class _TodoPageState extends State<TodoPage> {
           ),
         ),
       ),
+
       floatingActionButton: _textFieldButton()
   );
   }
@@ -63,9 +66,8 @@ class _TodoPageState extends State<TodoPage> {
           Expanded(
             child: TextField(
                  controller: myController,
-                 style: TextStyle(color: Colors.amber),
+                 style: TextStyle(color: Colors.white),
                  decoration: const InputDecoration(
-                    //counterStyle: TextStyle(color: Color.fromARGB(255, 145, 69, 69)),
                     contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
                     border: OutlineInputBorder(),
                     hintText: 'Write a quick task',

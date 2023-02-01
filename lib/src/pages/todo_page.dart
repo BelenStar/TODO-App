@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../classes/todo_item.dart';
 
 class TodoPage extends StatefulWidget {
-  const TodoPage({Key? key}) : super(key: key);
+  //const TodoPage({Key? key}) : super(key: key);
 
   @override
    createState() => _TodoPageState();
@@ -26,33 +26,31 @@ class _TodoPageState extends State<TodoPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.5),
-          ),
           child: ListView.builder(
             itemCount: _todoItems.length,
             itemBuilder: (context, index) {
-              return  CheckboxListTile(
-                side:BorderSide(color: const Color(0xFF0da574)) ,
-                value: _todoItems[index].completed,
-                onChanged: (newValue) =>{
-                  setState(() {
-                    _todoItems[index].completed = true; 
-                    _todoItems.removeAt(index);
-                  })
-                } ,
-                  tileColor: const Color(0xFF083358),
-                  title: Text(_todoItems[index].title,
-                   style: const TextStyle(color: Colors.white)),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15.5))
-                    ) ,
-                  controlAffinity: ListTileControlAffinity.leading,
+              return  Padding(
+                padding: const EdgeInsets.symmetric(vertical: 2),
+                child: CheckboxListTile(
+                  side:const BorderSide(color: Color(0xFF0da574)) ,
+                  value: _todoItems[index].completed,
+                  onChanged: (newValue) =>{
+                    setState(() {
+                      _todoItems[index].completed = true; 
+                      _todoItems.removeAt(index);
+                    })
+                  } ,
+                    tileColor: const Color(0xFF083358),
+                    title: Text(_todoItems[index].title,
+                     style: const TextStyle(color: Colors.white)),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15.5))
+                      ) ,
+                    controlAffinity: ListTileControlAffinity.leading,
+                ),
               );
             },
           ),
-        ),
       ),
 
       floatingActionButton: _textFieldButton()
@@ -66,7 +64,7 @@ class _TodoPageState extends State<TodoPage> {
           Expanded(
             child: TextField(
                  controller: myController,
-                 style: TextStyle(color: Colors.white),
+                 style: const TextStyle(color: Colors.white),
                  decoration: const InputDecoration(
                     contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
                     border: OutlineInputBorder(),
